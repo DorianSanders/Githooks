@@ -8,7 +8,7 @@ Clone this repository to access the Git hooks:
 git clone https://github.com/DorianSanders/Githooks.git
 cd githooks
 ```
-## 2. Move Hooks to Your Project's Git Directory
+## 2 Move Hooks to Your Project's Git Directory
 ```bash
 mv pre-commit /path/to/your/project/.git/hooks/
 mv pre-push /path/to/your/project/.git/hooks/
