@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# List of files or patterns to avoid pushing
+blocked_files=("*.env" "*.key" "private_config.yml")
+
+# Find any files in the commit that match the blocked patterns
+for file in "${blocked_files[@]}"; do
+  if git diff --cached --name-only | grep -q "$file"; then
+    echo "Error: Push contains a blocked file pattern: '$file'."
+    exit 1
+  fi
+done
+
+# If no blocked files are found, allow the push
+exit 0
+

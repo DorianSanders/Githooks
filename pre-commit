@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# List of patterns to search for
+patterns=("API_KEY" "SECRET_KEY" "PASSWORD")
+
+# Exit code for errors
+exit_code=0
+
+# Check each file being committed
+for file in $(git diff --cached --name-only); do
+  for pattern in "${patterns[@]}"; do
+    if grep -q "$pattern" "$file"; then
+      echo "Error: The file '$file' contains the pattern '$pattern'."
+      exit_code=1
+    fi
+  done
+done
+
+exit $exit_code
+
